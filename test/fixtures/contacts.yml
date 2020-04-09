@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_user_id: 1
+  category_id: 1
+  home_builder_id: 1
+  title: MyString
+  body: MyString
+  type: 
+  preferred_contact: MyString
+  admin_memo: MyString
+  react_status: 
+
+two:
+  end_user_id: 1
+  category_id: 1
+  home_builder_id: 1
+  title: MyString
+  body: MyString
+  type: 
+  preferred_contact: MyString
+  admin_memo: MyString
+  react_status: 

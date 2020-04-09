@@ -1,0 +1,2 @@
+class HomeBuilder < ApplicationRecord
+end
