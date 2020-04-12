@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+.form-bg {
+	background-color: white;
+	border-radius: 10px;
+}
+
+.margin-ud {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.green {
+	color: #7fc845;
+}
+
+.white {
+	color: white;
+}
+
+.sign_up {
+	background-color: rgba( 15, 76, 129, 1);
+}
+
+.sign_in {
+	background-color: rgba( 15, 76, 129, 1);
+}
+
+i {
+	color: #7fc845;
+}

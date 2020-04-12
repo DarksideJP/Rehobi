@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_055301) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer "example_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_055301) do
     t.string "zip_code", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
-    t.boolean "is_unsubscribed", null: false
+    t.boolean "is_unsubscribed", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

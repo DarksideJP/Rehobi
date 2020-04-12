@@ -13,7 +13,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.string :zip_code, null: false
       t.string :address, null: false
       t.string :phone_number, null: false
-      t.boolean :is_unsubscribed, null: false, defualt: false
+      t.boolean :is_unsubscribed, null: false, default: false
 
 
       ## Recoverable
