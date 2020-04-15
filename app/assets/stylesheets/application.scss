@@ -33,14 +33,31 @@
 	color: white;
 }
 
-.sign_up {
-	background-color: rgba( 15, 76, 129, 1);
-}
-
-.sign_in {
+.main-bg {
 	background-color: rgba( 15, 76, 129, 1);
 }
 
 i {
 	color: #7fc845;
+}
+
+.notice {
+	color: red;
+	font-size: 20px;
+	text-align: center;
+}
+
+.text-frame {
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #7fc845; border-radius: 10px;
+	text-align: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.block-center {
+	margin: auto;
 }
