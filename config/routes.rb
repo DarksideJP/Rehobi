@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
     get "examples/favorites" => "favorites#index"
 
-    resources :contacts, only: [:new, :index, :show, :create]
+    resources :contacts, only: [:new, :index, :show, :create, :update]
     get "contacts_check" => "contacts#check"
     get "thanks" => "contacts#thanks"
     patch "cancel" => "contacts#cancel"
