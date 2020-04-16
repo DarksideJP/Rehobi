@@ -5,12 +5,12 @@ ja:
         house: 戸建て
         apartment: 集合住宅
 
-        react_status:
-          backlog: 未対応
-          WIP: 対応中
-          failure: 失注
-          contract: 成約
-          complete: 完了
+      react_status:
+        backlog: 未対応
+        WIP: 対応中
+        failure: 失注
+        contract: 成約
+        complete: 完了
 
     home_builder:
       area:
