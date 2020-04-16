@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_055301) do
 
   create_table "home_builders", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "aria", null: false
+    t.integer "area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

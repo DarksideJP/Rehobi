@@ -11,3 +11,10 @@ ja:
           failure: 失注
           contract: 成約
           complete: 完了
+
+    home_builder:
+      area:
+        osaka: 大阪府
+        kyoto: 京都府
+        nara: 奈良県
+        hyogo: 兵庫県
