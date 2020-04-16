@@ -2,7 +2,7 @@ ja:
   enums:
     contact:
       housing_type:
-        house:　戸建て
+        house: 戸建て
         apartment: 集合住宅
 
         react_status:
