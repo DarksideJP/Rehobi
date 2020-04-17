@@ -10,9 +10,9 @@ class Admin::HomeBuildersController < ApplicationController
   	@home_builder = HomeBuilder.new(home_builder_params)
   	# binding.pry
   	if @home_builder.save
-  		redirect_to admin_home_builders_path
+  		redirect_to admin_home_builders_path, notice: "登録が完了しました"
   	else
-  		reder :new
+  		render :new
   	end
   end
 
