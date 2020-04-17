@@ -18,3 +18,11 @@ ja:
         kyoto: 京都府
         nara: 奈良県
         hyogo: 兵庫県
+
+  activerecord:
+    models:
+      home_builder: ホームビルダー
+    attributes:
+      home_builder:
+        name: ホームビルダー名
+        area: 担当エリア
