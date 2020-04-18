@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :end_users, only: [:update]
     get "my_page" => "end_users#my_page"
-    get "my_page/edit" => "end_users#edit"
+    get "edit" => "end_users#edit"
     get "check" => "end_users#check"
     patch "unsubscribed" => "end_users#unsubscribed"
 
