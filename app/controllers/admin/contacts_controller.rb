@@ -5,7 +5,7 @@ class Admin::ContactsController < ApplicationController
   	elsif params[:id] == "all"
   		@contacts = Contact.all
   	elsif params[:id]
-      @end_user = EndUser.find(params[:id])
+      @end_user = EndUser.with_deleted.find(params[:id])
       @contacts = @end_user.contacts.all
     else
   		@contacts = Contact.all

@@ -26,8 +26,9 @@
 				<% @contacts.each do |contact| %>
 					<tr>
 						<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-						<td><%= contact.end_user.address %></td>
-						<td><%= str = contact.end_user.last_name << contact.end_user.first_name %></td>
+						<% @end_user = EndUser.with_deleted.find(contact.end_user_id) %>
+						<td><%= @end_user.address %></td>
+						<td><%= @end_user.last_name %> <%= @end_user.first_name %></td>
 						<td><%= contact.title %></td>
 						<td><%= contact.category.name %></td>
 						<td><%= contact.react_status_i18n %></td>
