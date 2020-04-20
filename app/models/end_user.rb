@@ -5,4 +5,5 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :contacts
          has_many :favorites
+         acts_as_paranoid
 end
