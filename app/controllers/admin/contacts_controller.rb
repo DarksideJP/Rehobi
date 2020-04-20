@@ -1,10 +1,13 @@
 class Admin::ContactsController < ApplicationController
   def index
-  	if params[:id] == "2"
+  	if params[:id] == "in_progress"
   		@contacts = Contact.where.not(react_status: "complete" )
-  	elsif params[:id] == "1"
+  	elsif params[:id] == "all"
   		@contacts = Contact.all
-  	else
+  	elsif params[:id]
+      @end_user = EndUser.find(params[:id])
+      @contacts = @end_user.contacts.all
+    else
   		@contacts = Contact.all
   	end
   end
@@ -18,7 +21,7 @@ class Admin::ContactsController < ApplicationController
   	contact.update(contact_params)
   	if params[:contact][:react_status]
   		redirect_to request.referer, notice: "対応ステータスを変更しました"
-  elsif params[:contact][:home_builder_id]
+    elsif params[:contact][:home_builder_id]
   		redirect_to request.referer, notice: "対応ホームビルダーを設定しました"
   	else
   		redirect_to request.referer, notice: "管理者用メモを更新しました"
