@@ -1,0 +1,12 @@
+<h1><strong>本当に退会しますか?</strong></h1><br>
+
+<p>
+	退会すると、会員登録情報や<br>
+これまでのお問い合わせを閲覧できなくなります。<br>
+退会する場合は、「退会する」をクリックしてください。<br>
+</p>
+
+<%= link_to "退会しない", my_page_path, class: "btn btn-success "%>
+<%= link_to "退会する", unsubscribed_path, method: :patch, data:  { confirm: '本当に退会しますか？' }, class: "btn btn-danger" %>
+
+</div>
