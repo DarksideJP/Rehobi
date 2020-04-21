@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   }
 
   scope module: :end_user do
+
     root "homes#top"
+
+    get "about" => "homes#about"
 
     resources :end_users, only: [:update]
     get "my_page" => "end_users#my_page"

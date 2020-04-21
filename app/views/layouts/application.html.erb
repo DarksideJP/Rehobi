@@ -10,7 +10,92 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body role="document" data-spy="scroll" data-target="#ScrollSpy" data-offset="1" id="top">
+    <div id="ScrollSpy">
+      <header class="bg-option">
+        <nav class="navbar bg-option navbar-fixed-top">
+          <div class="container-fluid">
+            <%= link_to root_path do %>
+              <%= image_tag "logo1.png", :size => '150x150', class:"mgl" %>
+            <% end %>
+
+            <ul class="nav mgr block-center">
+
+              <% if admin_signed_in? %>
+              <!-- 管理者ログイン中 -->
+                <li>
+                  <i class="fas fa-store"></i><span><%= link_to "お問い合わせ一覧",admin_contacts_path, class:"btn btn-default" %></span>
+                </li>
+                <li>
+                  <i class="fas fa-address-card"></i><span><%= link_to "施工事例一覧",admin_examples_path, class:"btn btn-default" %></span>
+                </li>
+                <li>
+                  <i class="fas fa-history"></i><span><%= link_to "会員一覧",admin_end_users_path, class:"btn btn-default" %></span>
+                </li>
+                <li>
+                  <i class="fas fa-list"></i><span><%= link_to "ホームビルダー一覧",admin_home_builders_path, class:"btn btn-default" %></span>
+                </li>
+                <li>
+                  <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_admin_session_path, class:"btn btn-default", method: :delete %></span>
+                </li>
+
+              <% elsif end_user_signed_in? %>
+              <!-- 会員ログイン中 -->
+
+                <p class="text-center">
+                  <i class="fas fa-child fa-spin fa-lg"></i>ようこそ、<%= current_end_user.last_name %> <%= current_end_user.first_name %>さん!
+                </p>
+
+                <li>
+                  <i class="fas fa-user"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
+                </li>
+
+                <li>
+                  <i class="fas fa-list"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
+                </li>
+
+                <li>
+                  <i class="fas fa-shopping-cart"></i><span><%= link_to "お問い合わせ", new_contact_path, class:"btn btn-default" %></span>
+                </li>
+
+                 <li>
+                  <i class="fas fa-shopping-cart"></i><span><%= link_to "マイページ", my_page_path, class:"btn btn-default" %></span>
+                </li>
+
+                <li>
+                  <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_end_user_session_path, class:"btn btn-default", method: :delete %></span>
+                </li>
+
+              <% elsif request.fullpath != "/admin/sign_in" %>
+              <!-- それ以外の場合　*管理者ログイン画面では表示しない -->
+
+                <li>
+                  <i class="fas fa-user"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
+                </li>
+
+                <li>
+                  <i class="fas fa-list"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
+                </li>
+
+                <li>
+                  <i class="fas fa-user-plus"></i><span><%= link_to "新規登録", new_end_user_registration_path, class:"btn btn-default" %></span>
+                </li>
+
+                <li>
+                  <i class="fas fa-sign-in-alt"></i><span><%= link_to "ログイン", new_end_user_session_path, class:"btn btn-default" %></span>
+                </li>
+
+                <% else request.fullpath == "/admin/sign_in" %>
+                 <li>
+                  <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログイン",new_admin_session_path, class:"btn btn-default" %></span>
+                </li>
+
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <%= yield %>
+    </div>
   </body>
 </html>
