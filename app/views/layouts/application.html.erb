@@ -24,16 +24,16 @@
               <% if admin_signed_in? %>
               <!-- 管理者ログイン中 -->
                 <li>
-                  <i class="fas fa-store"></i><span><%= link_to "お問い合わせ一覧",admin_contacts_path, class:"btn btn-default" %></span>
+                  <i class="far fa-paper-plane"></i><span><%= link_to "お問い合わせ一覧",admin_contacts_path, class:"btn btn-default" %></span>
                 </li>
                 <li>
-                  <i class="fas fa-address-card"></i><span><%= link_to "施工事例一覧",admin_examples_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-home"></i><span><%= link_to "施工事例一覧",admin_examples_path, class:"btn btn-default" %></span>
                 </li>
                 <li>
-                  <i class="fas fa-history"></i><span><%= link_to "会員一覧",admin_end_users_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-users"></i><span><%= link_to "会員一覧",admin_end_users_path, class:"btn btn-default" %></span>
                 </li>
                 <li>
-                  <i class="fas fa-list"></i><span><%= link_to "ホームビルダー一覧",admin_home_builders_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-building"></i><span><%= link_to "ホームビルダー一覧",admin_home_builders_path, class:"btn btn-default" %></span>
                 </li>
                 <li>
                   <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_admin_session_path, class:"btn btn-default", method: :delete %></span>
@@ -42,39 +42,39 @@
               <% elsif end_user_signed_in? %>
               <!-- 会員ログイン中 -->
 
-                <p class="text-center">
-                  <i class="fas fa-child fa-spin fa-lg"></i>ようこそ、<%= current_end_user.last_name %> <%= current_end_user.first_name %>さん!
-                </p>
-
                 <li>
-                  <i class="fas fa-user"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-home"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
                 </li>
 
                 <li>
-                  <i class="fas fa-list"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-info-circle"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
                 </li>
 
                 <li>
-                  <i class="fas fa-shopping-cart"></i><span><%= link_to "お問い合わせ", new_contact_path, class:"btn btn-default" %></span>
+                  <i class="far fa-paper-plane"></i><span><%= link_to "お問い合わせ", new_contact_path, class:"btn btn-default" %></span>
                 </li>
 
                  <li>
-                  <i class="fas fa-shopping-cart"></i><span><%= link_to "マイページ", my_page_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-user"></i><span><%= link_to "マイページ", my_page_path, class:"btn btn-default" %></span>
                 </li>
 
                 <li>
                   <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_end_user_session_path, class:"btn btn-default", method: :delete %></span>
                 </li>
 
+                 <p class="block-center">
+                  <i class="fas fa-child fa-spin fa-lg"></i>ようこそ、<%= current_end_user.last_name %> <%= current_end_user.first_name %>さん!
+                </p>
+
               <% elsif request.fullpath != "/admin/sign_in" %>
               <!-- それ以外の場合　*管理者ログイン画面では表示しない -->
 
                 <li>
-                  <i class="fas fa-user"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-home"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
                 </li>
 
                 <li>
-                  <i class="fas fa-list"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-info-circle"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
                 </li>
 
                 <li>
@@ -87,7 +87,7 @@
 
                 <% else request.fullpath == "/admin/sign_in" %>
                  <li>
-                  <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログイン",new_admin_session_path, class:"btn btn-default" %></span>
+                  <i class="fas fa-sign-in-alt"></i><span><%= link_to "ログイン",new_admin_session_path, class:"btn btn-default" %></span>
                 </li>
 
               <% end %>
