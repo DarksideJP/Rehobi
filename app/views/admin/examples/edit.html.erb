@@ -1,2 +1,37 @@
-<h1>Admin::Examples#edit</h1>
-<p>Find me in app/views/admin/examples/edit.html.erb</p>
+<div class="container">
+	<%= form_with model: @example, url: admin_example_path ,local: true, method: :patch do |f| %>
+		<div class="row mgt bg-option">
+			<div class="col-md-10 block-center text-center">
+				<% if @example.errors.any? %>
+		        	<div id="error_explanation">
+		            	<h2><%= @example.errors.count %>件のエラーが発生しました。</h2>
+		              	<ul style="list-style-type:none;">
+		                	<% @example.errors.full_messages.each do |message| %>
+		                		<li><%= message %></li>
+		                	<% end %>
+		             	</ul>
+		            </div>
+				<% end %>
+				<% if @example.is_release == false %>
+					<h3>施工事例修正</h3>
+				<% else %>
+					<h3>施工事例編集</h3>
+				<% end %>
+				<h4 class="mgt">施工前写真</h4>
+				<%= attachment_image_tag @example, :before_image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image_before.png", size: "150x150" %>
+				<%= f.attachment_field :before_image %>
+				<h4 class="mgt">施工後写真</h4>
+				<%= attachment_image_tag @example, :after_image, :fill, 150, 150, class: "img-circle pull-left profile-thumb", fallback: "no_image_before.png", size: "150x150" %>
+				<%= f.attachment_field :after_image %>
+				<h4 class="mgt">タイトル</h4>
+				<%= f.text_field :title, :size=> "40" %>
+				<h4 class="mgt">カテゴリー</h4>
+				<%= f.collection_select :category_id, Category.all, :id, :name, {:selected => @example.category_id } %>
+				<h4 class="mgt">説明文</h4>
+				<%= f.text_area :body, :size=> "45x10" %><br>
+				<%= f.submit "更新", class:"btn btn-info" %>
+			</div>
+		</div>
+	<% end %>
+</div>
+

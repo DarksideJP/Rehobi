@@ -1,2 +1,31 @@
-<h1>Admin::Examples#index</h1>
-<p>Find me in app/views/admin/examples/index.html.erb</p>
+<div class="page-title-parent">
+	<div class="page-title">
+		<h3>施工事例
+		  <%= link_to new_admin_example_path, class:"fas fa-plus-circle fa-1x mgl" do %><% end %>
+		</h3>
+		<h4> 全　<%= @examples.count %>　件</h4>
+	</div>
+</div>
+<div class="examples-parent">
+	<div class="examples">
+		<% @examples.each do |example| %>
+			<div class="example-item bg-option">
+				<div class="example-image-parent"> <!-- display: flex -->
+					<div class="example-image">
+						<%= link_to admin_example_path(example.id) do %>
+							<%= attachment_image_tag example, :after_image, :fill, 250, 200, class:"mgtb", fallback: "no_image_before.png", size: "400x250" %>
+						<% end %>
+					</div>
+				</div>
+				<%= link_to admin_example_path(example.id) do %>
+					<p class="text-frame t20"><%= example.title %></p>
+				<% end %>
+				<div class="category-btn-parent">
+					<div class="btn btn-info category-btn">
+						<%= example.category.name %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
