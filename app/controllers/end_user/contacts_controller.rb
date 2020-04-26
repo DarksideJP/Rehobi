@@ -1,4 +1,7 @@
 class EndUser::ContactsController < ApplicationController
+
+before_action :authenticate_end_user!
+
   def new
     @contact = Contact.new
     @end_user = EndUser.find(current_end_user.id)

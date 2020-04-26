@@ -1,4 +1,7 @@
 class EndUser::EndUsersController < ApplicationController
+
+before_action :authenticate_end_user!
+
   def my_page
   	@end_user = EndUser.find(current_end_user.id)
   end

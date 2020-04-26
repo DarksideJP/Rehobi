@@ -1,4 +1,7 @@
 class Admin::ContactsController < ApplicationController
+
+before_action :authenticate_admin!
+
   def index
   	if params[:id] == "in_progress"
   		@contacts = Contact.where.not(react_status: "complete" )
