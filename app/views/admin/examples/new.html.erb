@@ -1,2 +1,30 @@
-<h1>Admin::Examples#new</h1>
-<p>Find me in app/views/admin/examples/new.html.erb</p>
+<div class="container">
+	<%= form_with model: @example, url: admin_examples_path ,local: true, method: :post do |f| %>
+		<div class="row mgt bg-option">
+			<div class="col-md-10 block-center text-center">
+				<% if @example.errors.any? %>
+		        	<div id="error_explanation">
+		            	<h2><%= @example.errors.count %>件のエラーが発生しました。</h2>
+		              	<ul style="list-style-type:none;">
+		                	<% @example.errors.full_messages.each do |message| %>
+		                		<li><%= message %></li>
+		                	<% end %>
+		             	</ul>
+		            </div>
+				<% end %>
+				<h3>施工事例投稿</h3>
+				<h4 class="mgt">施工前写真</h4>
+				<%= f.attachment_field :before_image %>
+				<h4 class="mgt">施工後写真</h4>
+				<%= f.attachment_field :after_image %>
+				<h4 class="mgt">タイトル</h4>
+				<%= f.text_field :title, :size=> "40" %>
+				<h4 class="mgt">カテゴリー</h4>
+				<%= f.collection_select :category_id, Category.all, :id, :name, {:selected => @example.category_id } %>
+				<h4 class="mgt">説明文</h4>
+				<%= f.text_area :body, :size=> "45x10" %><br>
+				<%= f.submit "投稿確認へ", class:"btn btn-info" %>
+			</div>
+		</div>
+	<% end %>
+</div>

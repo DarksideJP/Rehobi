@@ -49,7 +49,6 @@ Rails.application.routes.draw do
     resources :home_builders, only: [:index, :new, :create, :edit, :update, :destroy]
 
     resources :examples
-    get "examples/check" => "examples#check"
 
     resources :categories, only: [:index, :create, :edit, :update, :destroy]
   end

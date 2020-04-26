@@ -26,3 +26,13 @@ ja:
       home_builder:
         name: ホームビルダー名
         area: 担当エリア
+
+    models:
+      example: 施工事例
+    attributes:
+      example:
+        category_id: カテゴリー
+        title: タイトル
+        body: 説明文
+        before_image_id: 施工前画像
+        after_image_id: 施工後画像
