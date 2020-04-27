@@ -1,47 +1,45 @@
 <body class="main-bg">
-	<div class="container">
-		<div class="row">
-			<div class="block-center">
-				<h3 class="mgtb">マイページ</h3>
-				<%= notice %>
-			</div>
+	<div class="text-center">
+		<h3 class="mgtb">マイページ</h3>
+		<%= notice %>
+	</div>
+	<div class ="sub-title-parent mgb">
+		<div class="sub-title mgr">
+			<h4>登録情報</h4>
 		</div>
-		<div class="row mgtb">
-			<div class="col-md-2 offset-md-3">
-				<h4>登録情報</h4>
-			</div>
-			<div class="col-md-2">
-				<%= link_to "編集する", edit_path, class:"btn btn-info" %>
-			</div>
+		<div class="edit-link">
+			<%= link_to "編集する", edit_path, class:"btn btn-info inline" %>
 		</div>
-		<div class="row">
-			<div class="block-center">
-			<table class="table　table-hover table-primary table-bordered">
-				<tr>
-					<th class="text-center">氏名</th>
-					<td><%= @end_user.last_name %> <%= @end_user.first_name %></td>
-				</tr>
-				<tr>
-					<th class="text-center">フリガナ</th>
-					<td><%= @end_user.last_name_kana %> <%= @end_user.first_name_kana %></td>
-				</tr>
-				<tr>
-					<th class="text-center">郵便番号</th>
-					<td>〒<%= @end_user.zip_code %></td>
-				</tr>
-				<tr>
-					<th class="text-center">住所</th>
-					<td><%= @end_user.address %></td>
-				</tr>
-				<tr>
-					<th class="text-center">電話番号</th>
-					<td><%= @end_user.phone_number %></td>
-				</tr>
-				<tr>
-					<th class="text-center">メールアドレス</th>
-					<td><%= @end_user.email %></td>
-				</tr>
-			</table>
+	</div>
+	<div class="infomation">
+		<table class="table　table-hover table-primary table-bordered block-center">
+			<tr>
+				<th class="text-center">氏名</th>
+				<td><%= @end_user.last_name %> <%= @end_user.first_name %></td>
+			</tr>
+			<tr>
+				<th class="text-center">フリガナ</th>
+				<td><%= @end_user.last_name_kana %> <%= @end_user.first_name_kana %></td>
+			</tr>
+			<tr>
+				<th class="text-center">郵便番号</th>
+				<td>〒<%= @end_user.zip_code %></td>
+			</tr>
+			<tr>
+				<th class="text-center">住所</th>
+				<td><%= @end_user.address %></td>
+			</tr>
+			<tr>
+				<th class="text-center">電話番号</th>
+				<td><%= @end_user.phone_number %></td>
+			</tr>
+			<tr>
+				<th class="text-center">メールアドレス</th>
+				<td><%= @end_user.email %></td>
+			</tr>
+		</table>
+		<div class="text-center mgt">
+			<%= link_to "お問い合わせ履歴", contacts_path, class:"btn btn-primary" %>
 		</div>
 	</div>
 </body>
