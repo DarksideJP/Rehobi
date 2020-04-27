@@ -1,3 +1,21 @@
 // Place all the styles related to the end_user/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-image {
+	width: 100vw;
+	height: 80vh;
+}
+
+.welcome-text {
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+}
+
+.welcome-content {
+	width:50%;
+	height: 200px;
+	margin: 7% auto auto;
+	background-color: rgba( 0, 0, 0, 0.5);
+}
