@@ -15,14 +15,15 @@
     <header>
       <nav class="navbar fixed-top bg-option">
         <div class="container-fluid">
-          <%= link_to root_path do %>
-            <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
-          <% end %>
 
-          <ul class="nav mgr block-center">
+          <% if admin_signed_in? %>
+          <!-- 管理者ログイン中 -->
 
-            <% if admin_signed_in? %>
-            <!-- 管理者ログイン中 -->
+            <%= link_to admin_root_path do %>
+              <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
+            <% end %>
+
+            <ul class="nav mgr block-center">
               <li>
                 <i class="far fa-paper-plane"></i><span><%= link_to "お問い合わせ一覧",admin_contacts_path, class:"btn btn-default" %></span>
               </li>
@@ -38,10 +39,16 @@
               <li>
                 <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_admin_session_path, class:"btn btn-default", method: :delete %></span>
               </li>
+            </ul>
 
-            <% elsif end_user_signed_in? %>
-            <!-- 会員ログイン中 -->
+          <% elsif end_user_signed_in? %>
+          <!-- 会員ログイン中 -->
 
+            <%= link_to root_path do %>
+              <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
+            <% end %>
+
+            <ul class="nav mgr block-center">
               <li>
                 <i class="fas fa-home"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
               </li>
@@ -65,10 +72,16 @@
                <p class="name block-center">
                 <i class="fas fa-child fa-lg"></i>ようこそ、<%= current_end_user.last_name %> <%= current_end_user.first_name %>さん!
               </p>
+            </ul>
 
-            <% elsif request.fullpath != "/admin/sign_in" %>
-            <!-- それ以外の場合　*管理者ログイン画面では表示しない -->
+          <% elsif request.fullpath != "/admin/sign_in" %>
+          <!-- それ以外の場合　*管理者ログイン画面では表示しない -->
 
+            <%= link_to root_path do %>
+              <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
+            <% end %>
+
+            <ul class="nav mgr block-center">
               <li>
                 <i class="fas fa-home"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
               </li>
@@ -89,9 +102,9 @@
                <li>
                 <i class="fas fa-sign-in-alt"></i><span><%= link_to "ログイン",new_admin_session_path, class:"btn btn-default" %></span>
               </li>
+            </ul>
 
-            <% end %>
-          </ul>
+          <% end %>
         </div>
       </nav>
     </header>

@@ -1,2 +1,8 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+<div class="contacts text-center">
+	<div class="count">
+		<p>未対応のお問い合わせは　<span class="red"><%= @contacts.count %></span>　件です</p>
+	</div>
+</div>
