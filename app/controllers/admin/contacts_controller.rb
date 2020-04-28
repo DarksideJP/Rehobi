@@ -17,6 +17,8 @@ before_action :authenticate_admin!
 
   def show
   	@contact = Contact.find(params[:id])
+    # binding.pry
+    @end_user = EndUser.with_deleted.find(@contact.end_user_id)
   end
 
   def update

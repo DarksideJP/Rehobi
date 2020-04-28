@@ -11,9 +11,9 @@
 				<p class="mgt">お問い合わせ日時</p>
 				<p class="text-frame"><%= @contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
 				<p>住所</p>
-				<p class="text-frame"><%= @contact.end_user.address %></p>
+				<p class="text-frame"><%= @end_user.address %></p>
 				<p>顧客名</p>
-				<p class="text-frame"><%= str = @contact.end_user.last_name << @contact.end_user.first_name %></p>
+				<p class="text-frame"><%= str = @end_user.last_name << @end_user.first_name %></p>
 				<p>件名</p>
 				<p class="text-frame"><%= @contact.category.name %></p>
 				<p>希望連絡先</p>
