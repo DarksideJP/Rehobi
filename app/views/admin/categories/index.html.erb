@@ -25,11 +25,11 @@
 	</div><br>
 	<div class="row">
 		<div class="col-md-10 offset-md-2">
-			<table class="table table-hover table-primary">
+			<table class="table table-hover table-primary text-center">
 				<thead>
 					<tr>
 						<th>カテゴリー名</th>
-						<th>投稿数</th>
+						<th>施工事例投稿数</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -37,7 +37,7 @@
 					<% @categories.each do |category| %>
 						<tr>
 							<td><%= category.name %></td>
-							<% examples = Example.where(category_id: "category_id" ) %>
+							<% examples = category.examples.all %>
 							<td><%= examples.count %></td>
 							<td><%= link_to "編集する", edit_admin_category_path(category),class:"btn btn-info" %></td>
 						</tr>
