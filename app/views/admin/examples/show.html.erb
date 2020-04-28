@@ -1,2 +1,42 @@
-<h1>Admin::Examples#show</h1>
-<p>Find me in app/views/admin/examples/show.html.erb</p>
+<div class="container bg-option2">
+	<div class="row">
+		<div class="block-center">
+			<% if @example.is_release == false %>
+				<h3 class="text-center mgtb">投稿確認</h3>
+			<% else %>
+				<h3 class="text-center mgtb">事例詳細</h3>
+			<% end %>
+			<div style="display: inline-flex">
+				<p class="text-frame mgrl t20"><%= @example.title %></p>
+				<p class="btn btn-info block-center"><%= @example.category.name %></p>
+			</div>
+		</div>
+	</div>
+	<div class="row mgt">
+		<div class="col-md-5 mgl">
+			<h4>施工前</h4>
+			<%= attachment_image_tag @example, :before_image, :fill, 500, 500, class: "img-circle pull-left profile-thumb", fallback: "no_image_before.png", size: "500x500" %>
+		</div>
+		<div class="col-md-5 offset-md-1 block-center">
+			<h4>施工後</h4>
+			<%= attachment_image_tag @example, :after_image, :fill, 500, 500, class: "img-circle pull-left profile-thumb", fallback: "no_image_before.png", size: "500x500" %>
+		</div>
+	</div>
+	<div class="row mgtb">
+		<p class="text-frame block-center"><%= @example.body %></p>
+	</div>
+	<div class="row">
+		<div class="block-center">
+			<% if @example.is_release == false %>
+				<%= form_with model: @example, url: admin_example_path ,local: true, method: :patch do |f| %>
+					<%= f.hidden_field :is_release, :value => true %>
+					<%= f.submit "公開する", class:"btn btn-info" %>
+					<%= link_to "修正する", edit_admin_example_path(@example), class:"btn btn-warning" %>
+				<% end %>
+			<% else %>
+				<%= link_to "編集する", edit_admin_example_path(@example), class:"btn btn-warning" %>
+				<%= link_to "削除する", admin_example_path(@example), method: :delete, data:  { confirm: '本当に削除しますか？' }, class:"btn btn-danger" %>
+			<% end %>
+		</div>
+	</div>
+</div>

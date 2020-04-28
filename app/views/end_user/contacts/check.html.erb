@@ -1,2 +1,63 @@
-<h1>EndUser::Contacts#check</h1>
-<p>Find me in app/views/end_user/contacts/check.html.erb</p>
+<body class="main-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 form-bg">
+				<div class="row">
+					<div class="col-md-10 offset-md-2 mgtb">
+						<h3>お問い合わせ内容確認</h3>
+					</div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">件名</h4>
+				        <p class="text-frame"><%= params[:contact][:title] %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">カテゴリー</h4>
+				        <% category = Category.find(params[:contact][:category_id]) %>
+				        <p class="text-frame"><%= category.name %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">住宅種別</h4>
+				        <p class="text-frame"><%= params[:contact][:housing_type] %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">希望連絡先</h4>
+				        <p class="text-frame"><%= params[:contact][:preferred_contact] %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">お問い合わせ内容</h4>
+				        <p class="text-frame"><%= params[:contact][:body] %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-3 offset-2">
+						<%= form_with model: @contact, url: new_contact_path ,local: true, method: :get do |f| %>
+							<%= f.hidden_field :title, :value => params[:contact][:title] %>
+							<%= f.hidden_field :category_id, :value => params[:contact][:category_id] %>
+							<%= f.hidden_field :housing_type, :value => params[:contact][:housing_type] %>
+							<%= f.hidden_field :preferred_contact, :value => params[:contact][:preferred_contact] %>
+							<%= f.hidden_field :body, :value => params[:contact][:body] %>
+							<%= f.submit "修正する", class:"btn btn-warning" %>
+						<% end %>
+					</div>
+					<div class="col-md-3 offset-2">
+						<%= form_with model: @contact, url: contacts_path ,local: true, method: :post do |f| %>
+							<%= f.hidden_field :title, :value => params[:contact][:title] %>
+							<%= f.hidden_field :category_id, :value => params[:contact][:category_id].to_i %>
+							<%= f.hidden_field :housing_type, :value => params[:contact][:housing_type] %>
+							<%= f.hidden_field :preferred_contact, :value => params[:contact][:preferred_contact] %>
+							<%= f.hidden_field :body, :value => params[:contact][:body] %>
+							<%= f.hidden_field :end_user_id, :value => @end_user.id %>
+							<%= f.submit "送信", class:"btn btn-info" %>
+						<% end %>
+					</div>
+				</div>

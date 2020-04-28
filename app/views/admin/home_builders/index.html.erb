@@ -1,2 +1,34 @@
-<h1>Admin::HomeBuilders#index</h1>
-<p>Find me in app/views/admin/home_builders/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<h2>ホームビルダー一覧</h2><br>
+			<strong class="notice"><%= notice %></strong>
+		</div>
+		<div class="col-md-3">
+			<%= link_to new_admin_home_builder_path, class:"fas fa-plus-circle fa-2x" do %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 offset-md-2">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ホームビルダー名</th>
+						<th>担当エリア</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @home_builders.each do |home_builder| %>
+						<tr>
+							<td><%= home_builder.name %></td>
+							<td><%= home_builder.area_i18n %></td>
+							<td><%= link_to "編集する", edit_admin_home_builder_path(home_builder),class:"btn btn-info" %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,2 +1,48 @@
-<h1>Admin::HomeBuilders#new</h1>
-<p>Find me in app/views/admin/home_builders/new.html.erb</p>
+<body class="main-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 form-bg">
+				<div class="row">
+					<div class="col-md-9 offset-md-3 mgtb">
+						<h3>ホームビルダー登録</h3>
+					</div>
+				</div>
+				<%= form_with model: @home_builder, url: admin_home_builders_path ,local: true, method: :post do |f| %>
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<% if @home_builder.errors.any? %>
+					        	<div id="error_explanation">
+					        		<div class="bg-danger text-white">
+						            	<h4><%= @home_builder.errors.count %>件のエラーが発生しました。</h4>
+						              	<ul>
+						                	<% @home_builder.errors.full_messages.each do |message| %>
+						                		<li><%= message %></li>
+						                	<% end %>
+						             	</ul>
+						            </div>
+					            </div>
+					        <% end %>
+					    </div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 offset-md-2 text-center">
+					        <h5>ホームビルダー名</h5>
+					        <div class="form-group">
+					        	<%= f.text_field :name, class:"btn-block text-center" %>
+					        </div>
+					         <h5>担当エリア</h5>
+					        <div class="form-group">
+					        	<%= f.select :area, [["大阪府", :osaka], ["京都府", :kyoto], ["奈良県", :nara], ["兵庫県", :hyogo]], include_blank: "選択して下さい" %>
+					        </div>
+					    </div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 offset-3 mgtb">
+					        <%= f.submit "登録", class:"btn btn-info btn-block" %>
+					    </div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</body>

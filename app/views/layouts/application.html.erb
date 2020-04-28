@@ -6,11 +6,108 @@
     <%= csp_meta_tag %>
     <link href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" rel="stylesheet">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
 
-  <body>
+  <body style="padding-top:10vh;">
+    <header>
+      <nav class="navbar fixed-top bg-option">
+        <div class="container-fluid">
+
+          <% if admin_signed_in? %>
+          <!-- 管理者ログイン中 -->
+
+            <%= link_to admin_root_path do %>
+              <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
+            <% end %>
+
+            <ul class="nav mgr block-center">
+              <li>
+                <i class="far fa-paper-plane"></i><span><%= link_to "お問い合わせ一覧",admin_contacts_path, class:"btn btn-default" %></span>
+              </li>
+              <li>
+                <i class="fas fa-home"></i><span><%= link_to "施工事例一覧",admin_examples_path, class:"btn btn-default" %></span>
+              </li>
+              <li>
+                <i class="fas fa-users"></i><span><%= link_to "会員一覧",admin_end_users_path, class:"btn btn-default" %></span>
+              </li>
+              <li>
+                <i class="fas fa-building"></i><span><%= link_to "ホームビルダー一覧",admin_home_builders_path, class:"btn btn-default" %></span>
+              </li>
+              <li>
+                <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_admin_session_path, class:"btn btn-default", method: :delete %></span>
+              </li>
+            </ul>
+
+          <% elsif end_user_signed_in? %>
+          <!-- 会員ログイン中 -->
+
+            <%= link_to root_path do %>
+              <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
+            <% end %>
+
+            <ul class="nav mgr block-center">
+              <li>
+                <i class="fas fa-home"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
+              </li>
+
+              <li>
+                <i class="fas fa-info-circle"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
+              </li>
+
+              <li>
+                <i class="far fa-paper-plane"></i><span><%= link_to "お問い合わせ", new_contact_path, class:"btn btn-default" %></span>
+              </li>
+
+               <li>
+                <i class="fas fa-user"></i><span><%= link_to "マイページ", my_page_path, class:"btn btn-default" %></span>
+              </li>
+
+              <li>
+                <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_end_user_session_path, class:"btn btn-default", method: :delete %></span>
+              </li>
+
+               <p class="name block-center">
+                <i class="fas fa-child fa-lg"></i>ようこそ、<%= current_end_user.last_name %> <%= current_end_user.first_name %>さん!
+              </p>
+            </ul>
+
+          <% elsif request.fullpath != "/admin/sign_in" %>
+          <!-- それ以外の場合　*管理者ログイン画面では表示しない -->
+
+            <%= link_to root_path do %>
+              <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
+            <% end %>
+
+            <ul class="nav mgr block-center">
+              <li>
+                <i class="fas fa-home"></i><span><%= link_to "施工事例",examples_path, class:"btn btn-default" %></span>
+              </li>
+
+              <li>
+                <i class="fas fa-info-circle"></i><span><%= link_to "Re:hobiについて", about_path, class:"btn btn-default" %></span>
+              </li>
+
+              <li>
+                <i class="fas fa-user-plus"></i><span><%= link_to "新規登録", new_end_user_registration_path, class:"btn btn-default" %></span>
+              </li>
+
+              <li>
+                <i class="fas fa-sign-in-alt"></i><span><%= link_to "ログイン", new_end_user_session_path, class:"btn btn-default" %></span>
+              </li>
+
+              <% else request.fullpath == "/admin/sign_in" %>
+               <li>
+                <i class="fas fa-sign-in-alt"></i><span><%= link_to "ログイン",new_admin_session_path, class:"btn btn-default" %></span>
+              </li>
+            </ul>
+
+          <% end %>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

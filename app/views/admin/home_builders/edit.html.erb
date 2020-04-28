@@ -1,2 +1,45 @@
-<h1>Admin::HomeBuilders#edit</h1>
-<p>Find me in app/views/admin/home_builders/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<h2>ホームビルダー編集</h2><br>
+		</div>
+	</div>
+	<%= form_for(@home_builder, url: admin_home_builder_path) do |f| %>
+	  <div class="row">
+		  <div class="col-md-8 offset-md-4">
+	    	<% if @home_builder.errors.any? %>
+    			<div id="error_explanation">
+      			<h2><%= @home_builder.errors.count %>件のエラーが発生しました。</h2>
+        			<ul>
+        				<% @home_builder.errors.full_messages.each do |message| %>
+        					<li><%= message %></li>
+        				<% end %>
+        			</ul>
+    			</div>
+    		<% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="block-center text-center">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th width = "300">ホームビルダー名</th>
+              <th>担当エリア</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><%= f.text_field :name, class:"btn-block text-center" %></td>
+                <td><%= f.select :area, [["大阪府", :osaka], ["京都府", :kyoto], ["奈良県", :nara], ["兵庫県", :hyogo]], {:selected => @home_builder.area } %></td>
+                <td><%= f.submit "更新", class:"btn btn-info" %></td>
+                <td><%= link_to "削除", admin_home_builder_path, method: :delete, class:"btn btn-danger", data: {confirm: "本当に削除しますか？"} %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

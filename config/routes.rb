@@ -10,11 +10,14 @@ Rails.application.routes.draw do
   }
 
   scope module: :end_user do
+
     root "homes#top"
+
+    get "about" => "homes#about"
 
     resources :end_users, only: [:update]
     get "my_page" => "end_users#my_page"
-    get "my_page/edit" => "end_users#edit"
+    get "edit" => "end_users#edit"
     get "check" => "end_users#check"
     patch "unsubscribed" => "end_users#unsubscribed"
 
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
 
     get "examples/favorites" => "favorites#index"
 
-    resources :contacts, only: [:new, :index, :show, :create]
+    resources :contacts, only: [:new, :index, :show, :create, :update]
     get "contacts_check" => "contacts#check"
     get "thanks" => "contacts#thanks"
     patch "cancel" => "contacts#cancel"
@@ -41,15 +44,11 @@ Rails.application.routes.draw do
 
     resources :end_users, only: [:index, :show, :update]
 
-    resources :contacts, only: [:index, :show]
-    patch "contacts/:id" => "contacts#react", as: "contact_react"
-    patch "contacts/:id" => "contacts#assign", as: "contact_assign"
-    patch "contacts/:id" => "contacts#memo", as: "contact_memo"
+    resources :contacts, only: [:index, :show, :update]
 
     resources :home_builders, only: [:index, :new, :create, :edit, :update, :destroy]
 
     resources :examples
-    get "examples/check" => "examples#check"
 
     resources :categories, only: [:index, :create, :edit, :update, :destroy]
   end

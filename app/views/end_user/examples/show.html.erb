@@ -1,2 +1,24 @@
-<h1>EndUser::Examples#show</h1>
-<p>Find me in app/views/end_user/examples/show.html.erb</p>
+<div class="container bg-option2">
+	<div class="row">
+		<div class="block-center">
+			<h3 class="text-center mgtb">事例詳細</h3>
+			<div style="display: inline-flex">
+				<p class="text-frame mgrl t20"><%= @example.title %></p>
+				<p class="btn btn-info block-center"><%= @example.category.name %></p>
+			</div>
+		</div>
+	</div>
+	<div class="row mgt">
+		<div class="col-md-5 mgl">
+			<h4>施工前</h4>
+			<%= attachment_image_tag @example, :before_image, :fill, 500, 500, class: "img-circle pull-left profile-thumb", fallback: "no_image_before.png", size: "500x500" %>
+		</div>
+		<div class="col-md-5 offset-md-1 block-center">
+			<h4>施工後</h4>
+			<%= attachment_image_tag @example, :after_image, :fill, 500, 500, class: "img-circle pull-left profile-thumb", fallback: "no_image_before.png", size: "500x500" %>
+		</div>
+	</div>
+	<div class="row pdtb">
+		<p class="text-frame block-center"><%= @example.body %></p>
+	</div>
+</div>

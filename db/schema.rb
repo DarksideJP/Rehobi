@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_055301) do
+ActiveRecord::Schema.define(version: 2020_04_23_062151) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_055301) do
     t.integer "home_builder_id"
     t.string "title", null: false
     t.string "body", null: false
-    t.string "type", null: false
+    t.string "housing_type", null: false
     t.string "preferred_contact", null: false
     t.string "admin_memo"
     t.integer "react_status", default: 0, null: false
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_04_07_055301) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_end_users_on_deleted_at"
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_055301) do
     t.string "after_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_release", default: false, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -83,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_055301) do
 
   create_table "home_builders", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "aria", null: false
+    t.integer "area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

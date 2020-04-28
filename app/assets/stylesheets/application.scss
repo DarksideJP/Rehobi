@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  @import "bootstrap";
 
 .form-bg {
@@ -20,9 +21,40 @@
 	border-radius: 10px;
 }
 
-.margin-ud {
+.mgtb {
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+
+.mgtb20 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.mgt {
+	margin-top: 30px;
+}
+
+.mgb {
+	margin-bottom: 30px;
+}
+
+.mgrl{
+	margin-right: 30px;
+	margin-left: 30px;
+}
+
+.mgr {
+	margin-right: 30px;
+}
+
+.mgl {
+	margin-left: 30px;
+}
+
+.pdtb {
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 .green {
@@ -33,14 +65,121 @@
 	color: white;
 }
 
-.sign_up {
-	background-color: rgba( 15, 76, 129, 1);
-}
-
-.sign_in {
+.main-bg {
 	background-color: rgba( 15, 76, 129, 1);
 }
 
 i {
+	color: #7fc845;
+}
+
+.notice {
+	color: red;
+	font-size: 20px;
+	text-align: center;
+}
+
+.text-frame {
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #7fc845; border-radius: 10px;
+	text-align: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.block-center {
+	margin: auto;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-image: url(bg2.png);
+	backgroud-position: 50px 100px;
+}
+
+.bg-option {
+	background-color: rgba( 255, 255, 255, 0.8);
+}
+
+.bg-option2 {
+	background-color: rgba( 255, 255, 255, 0.9);
+}
+
+.bg-option3 {
+	background-color: rgba( 0, 0, 0, 0.6);
+}
+
+
+.t20 {
+	font-size: 20px;
+}
+
+#error_explanation{
+	color: red;
+	text-align: center;
+}
+
+a {
+	color: black;
+}
+
+.inline {
+	display: inline;
+}
+
+.block {
+	display: block;
+}
+
+.image1 {
+background-image: url(image1.jpg);
+background-size: cover;
+}
+
+.image2 {
+background-image: url(image2.jpg);
+background-size: cover;
+}
+
+.image3 {
+background-image: url(image3.jpg);
+background-size: cover;
+}
+
+.image4 {
+background-image: url(image4.jpg);
+background-size: cover;
+}
+
+.image5 {
+background-image: url(image5.jpg);
+background-size: cover;
+}
+
+.image6 {
+background-image: url(image6.jpg);
+background-size: cover;
+}
+
+.image7 {
+background-image: url(image7.jpg);
+background-size: cover;
+}
+
+.image8 {
+background-image: url(image8.jpg);
+background-size: cover;
+}
+
+nav {
+	height: 10vh;
+}
+
+.name {
 	color: #7fc845;
 }

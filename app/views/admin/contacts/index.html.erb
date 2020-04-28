@@ -1,2 +1,46 @@
-<h1>Admin::Contacts#index</h1>
-<p>Find me in app/views/admin/contacts/index.html.erb</p>
+<body class="main-bg">
+	<div class="container">
+		<div class="row mgtb">
+			<div class="col-md-4">
+				<h3>お問い合わせ内容一覧</h3>
+			</div>
+			<div class="col-md-5">
+				<%= link_to "全ての案件を表示", ({controller: 'admin/contacts', action: 'index', id: "all" }), class:"btn btn-info mgr" %>
+				<%= link_to "進行中案件のみ表示", ({controller: 'admin/contacts', action: 'index', id: "in_progress" }), class:"btn btn-success" %>
+			</div>
+		</div>
+		<table class="table table-hover table-primary text-center">
+				<thead>
+					<tr>
+						<th>お問い合わせ日時</th>
+						<th>住所</th>
+						<th>顧客名</th>
+						<th>件名</th>
+						<th>カテゴリー</th>
+						<th>ステータス</th>
+						<th>対応ホームビルダー</th>
+						<th>詳細</th>
+					</tr>
+				</thead>
+			<tbody>
+				<% @contacts.each do |contact| %>
+					<tr>
+						<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+						<% @end_user = EndUser.with_deleted.find(contact.end_user_id) %>
+						<td><%= @end_user.address %></td>
+						<td><%= @end_user.last_name %> <%= @end_user.first_name %></td>
+						<td><%= contact.title %></td>
+						<td><%= contact.category.name %></td>
+						<td><%= contact.react_status_i18n %></td>
+						<% if contact.home_builder_id.nil? %>
+							<td></td>
+						<% else %>
+							<td><%= contact.home_builder.name %></td>
+						<% end %>
+						<td><%= link_to "表示する", admin_contact_path(contact), class:"btn btn-info" %> </td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</body>

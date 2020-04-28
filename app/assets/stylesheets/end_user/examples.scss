@@ -1,3 +1,52 @@
 // Place all the styles related to the end_user/examples controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Place all the styles related to the admin/examples controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.example-item:nth-child(3n+2) {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.examples-parent {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.examples {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: start;
+}
+
+.example-item {
+	width: 32%;
+	border-radius: 30px;
+	margin-top: 15px;
+}
+
+.example-image-parent {
+	display:flex;
+	justify-content: center;
+}
+
+.example-image {
+	max-width: 100%;
+}
+
+.category-btn-parent {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.category-btn {
+	margin: 10px 10px 20px 0;
+}
+
+.page-title-parent {
+	display: flex;
+	justify-content: center;
+}

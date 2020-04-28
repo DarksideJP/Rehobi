@@ -1,2 +1,50 @@
-<h1>EndUser::Contacts#show</h1>
-<p>Find me in app/views/end_user/contacts/show.html.erb</p>
+<body class="main-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 form-bg">
+				<div class="row">
+					<div class="col-md-10 offset-md-2 mgtb">
+						<h3>お問い合わせ詳細</h3>
+					</div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">お問い合わせ日時</h4>
+				        <p class="text-frame"><%= @contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">件名</h4>
+				        <p class="text-frame"><%= @contact.title %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">カテゴリー</h4>
+				        <p class="text-frame"><%= @contact.category.name %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">住宅種別</h4>
+				        <p class="text-frame"><%= @contact.housing_type %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">希望連絡先</h4>
+				        <p class="text-frame"><%= @contact.preferred_contact %></p>
+				    </div>
+				</div>
+				<div class="row mgtb">
+					<div class="col-md-8 offset-md-2">
+				        <h4 class="text-center">お問い合わせ内容</h4>
+				        <p class="text-frame"><%= @contact.body %></p>
+				    </div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 block-center">
+						<%= link_to "キャンセル",  contact_path(@contact),class:"btn btn-danger", method: :patch, data: {confirm: "お問い合わせをキャンセルしますか？"} %>
+					</div>
+				</div>

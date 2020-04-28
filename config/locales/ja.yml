@@ -1,0 +1,38 @@
+ja:
+  enums:
+    contact:
+      housing_type:
+        house: 戸建て
+        apartment: 集合住宅
+
+      react_status:
+        backlog: 未対応
+        WIP: 対応中
+        failure: 失注
+        contract: 成約
+        complete: 完了
+
+    home_builder:
+      area:
+        osaka: 大阪府
+        kyoto: 京都府
+        nara: 奈良県
+        hyogo: 兵庫県
+
+  activerecord:
+    models:
+      home_builder: ホームビルダー
+    attributes:
+      home_builder:
+        name: ホームビルダー名
+        area: 担当エリア
+
+    models:
+      example: 施工事例
+    attributes:
+      example:
+        category_id: カテゴリー
+        title: タイトル
+        body: 説明文
+        before_image_id: 施工前画像
+        after_image_id: 施工後画像
