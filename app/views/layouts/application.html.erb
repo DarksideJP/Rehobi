@@ -11,12 +11,12 @@
     <%= favicon_link_tag('favicon.ico') %>
   </head>
 
-  <body style="padding-top:20vh;">
+  <body style="padding-top:10vh;">
     <header>
       <nav class="navbar fixed-top bg-option">
         <div class="container-fluid">
           <%= link_to root_path do %>
-            <%= image_tag "logo1.png", :width => '150', :height => '150', class:"mgl" %>
+            <%= image_tag "logo1.png", :width => '70', :height => '70', class:"mgl" %>
           <% end %>
 
           <ul class="nav mgr block-center">
@@ -62,8 +62,8 @@
                 <i class="fas fa-sign-out-alt"></i><span><%= link_to "ログアウト",destroy_end_user_session_path, class:"btn btn-default", method: :delete %></span>
               </li>
 
-               <p class="block-center">
-                <i class="fas fa-child fa-spin fa-lg"></i>ようこそ、<%= current_end_user.last_name %> <%= current_end_user.first_name %>さん!
+               <p class="name block-center">
+                <i class="fas fa-child fa-lg"></i>ようこそ、<%= current_end_user.last_name %> <%= current_end_user.first_name %>さん!
               </p>
 
             <% elsif request.fullpath != "/admin/sign_in" %>
