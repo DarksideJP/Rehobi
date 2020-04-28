@@ -37,7 +37,8 @@
 					<% @categories.each do |category| %>
 						<tr>
 							<td><%= category.name %></td>
-							<td></td>
+							<% examples = Example.where(category_id: "category_id" ) %>
+							<td><%= examples.count %></td>
 							<td><%= link_to "編集する", edit_admin_category_path(category),class:"btn btn-info" %></td>
 						</tr>
 					<% end %>
