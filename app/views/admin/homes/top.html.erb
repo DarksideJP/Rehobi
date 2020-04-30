@@ -3,6 +3,13 @@
 <% end %>
 <div class="contacts text-center">
 	<div class="count">
-		<p>未対応のお問い合わせは　<span class="red"><%= @contacts.count %></span>　件です</p>
+		<% count = 0 %>
+		<% @contacts.each do |contact| %>
+			<% @end_user = EndUser.with_deleted.find(contact.end_user_id) %>
+			<% if @end_user.deleted_at == nil %>
+				<% count += 1 %>
+			<% end %>
+		<% end %>
+		<p>未対応のお問い合わせは　<span class="red"><%= count %></span>　件です</p>
 	</div>
 </div>
