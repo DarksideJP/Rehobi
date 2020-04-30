@@ -23,7 +23,14 @@ before_action :authenticate_admin!
 
   def update
   	contact = Contact.find(params[:id])
-  	contact.update(contact_params)
+    end_user = EndUser.with_deleted.find(contact.end_user_id)
+    if end_user.deleted_at != nil
+      end_user.restore
+  	 contact.update(contact_params)
+     end_user.destroy
+   else
+      contact.update(contact_params)
+    end
   	if params[:contact][:react_status]
   		redirect_to request.referer, notice: "対応ステータスを変更しました"
     elsif params[:contact][:home_builder_id]
