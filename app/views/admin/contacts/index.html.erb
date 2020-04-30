@@ -4,9 +4,10 @@
 			<div class="col-md-4">
 				<h3>お問い合わせ内容一覧</h3>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-7">
 				<%= link_to "全ての案件を表示", ({controller: 'admin/contacts', action: 'index', id: "all" }), class:"btn btn-info mgr" %>
-				<%= link_to "進行中案件のみ表示", ({controller: 'admin/contacts', action: 'index', id: "in_progress" }), class:"btn btn-success" %>
+				<%= link_to "進行中案件のみ表示", ({controller: 'admin/contacts', action: 'index', id: "in_progress" }), class:"btn btn-success mgr" %>
+				<%= link_to "未対応案件のみ表示", ({controller: 'admin/contacts', action: 'index', id: "backlog" }), class:"btn btn-warning" %>
 			</div>
 		</div>
 		<table class="table table-hover table-primary text-center">
@@ -28,6 +29,7 @@
 
 					<%# 進行中案件(完了を除いた案件)かつ、会員が退会している場合 %>
 					<% if params[:id] == "in_progress" && @end_user.deleted_at != nil  %>
+					<% elsif params[:id] == "backlog" && @end_user.deleted_at != nil %>
 					<% else %>
 						<tr>
 							<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
