@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-	belongs_to :end_user
+	belongs_to :end_user, -> {with_deleted}
 	belongs_to :category
 	belongs_to :home_builder, optional: true
 	enum type: {house: 1, apartment: 2}
