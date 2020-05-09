@@ -4,9 +4,14 @@ before_action :authenticate_admin!
 
   def index
   	if params[:id] == "in_progress"
+      #完了以外全て取得
   		@contacts = Contact.where.not(react_status: "complete" )
   	elsif params[:id] == "all"
   		@contacts = Contact.all
+    elsif params[:id] == "backlog"
+      #未対応を全て取得
+      @contacts = Contact.where(react_status: "backlog")
+      #特定の会員に紐づくお問い合わせを全て取得
   	elsif params[:id]
       @end_user = EndUser.with_deleted.find(params[:id])
       @contacts = @end_user.contacts.all
@@ -17,13 +22,13 @@ before_action :authenticate_admin!
 
   def show
   	@contact = Contact.find(params[:id])
-    # binding.pry
     @end_user = EndUser.with_deleted.find(@contact.end_user_id)
   end
 
   def update
   	contact = Contact.find(params[:id])
-  	contact.update(contact_params)
+    end_user = EndUser.with_deleted.find(contact.end_user_id)
+      contact.update!(contact_params)
   	if params[:contact][:react_status]
   		redirect_to request.referer, notice: "対応ステータスを変更しました"
     elsif params[:contact][:home_builder_id]

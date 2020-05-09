@@ -4,9 +4,10 @@
 			<div class="col-md-4">
 				<h3>お問い合わせ内容一覧</h3>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-7">
 				<%= link_to "全ての案件を表示", ({controller: 'admin/contacts', action: 'index', id: "all" }), class:"btn btn-info mgr" %>
-				<%= link_to "進行中案件のみ表示", ({controller: 'admin/contacts', action: 'index', id: "in_progress" }), class:"btn btn-success" %>
+				<%= link_to "進行中案件のみ表示", ({controller: 'admin/contacts', action: 'index', id: "in_progress" }), class:"btn btn-success mgr" %>
+				<%= link_to "未対応案件のみ表示", ({controller: 'admin/contacts', action: 'index', id: "backlog" }), class:"btn btn-warning" %>
 			</div>
 		</div>
 		<table class="table table-hover table-primary text-center">
@@ -24,21 +25,28 @@
 				</thead>
 			<tbody>
 				<% @contacts.each do |contact| %>
-					<tr>
-						<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-						<% @end_user = EndUser.with_deleted.find(contact.end_user_id) %>
-						<td><%= @end_user.address %></td>
-						<td><%= @end_user.last_name %> <%= @end_user.first_name %></td>
-						<td><%= contact.title %></td>
-						<td><%= contact.category.name %></td>
-						<td><%= contact.react_status_i18n %></td>
-						<% if contact.home_builder_id.nil? %>
-							<td></td>
-						<% else %>
-							<td><%= contact.home_builder.name %></td>
-						<% end %>
-						<td><%= link_to "表示する", admin_contact_path(contact), class:"btn btn-info" %> </td>
-					</tr>
+					<% @end_user = EndUser.with_deleted.find(contact.end_user_id) %>
+
+					<%# 進行中案件(完了を除いた案件)かつ、会員が退会している場合 %>
+					<% if params[:id] == "in_progress" && @end_user.deleted_at != nil  %>
+					<% elsif params[:id] == "backlog" && @end_user.deleted_at != nil %>
+					<% else %>
+						<tr>
+							<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+							<td><%= @end_user.address %></td>
+							<td><%= @end_user.last_name %> <%= @end_user.first_name %></td>
+							<td><%= contact.title %></td>
+							<td><%= contact.category.name %></td>
+							<td><%= contact.react_status_i18n %></td>
+							<%# ホームビルダーが登録されていない場合 %>
+							<% if contact.home_builder_id.nil? %>
+								<td></td>
+							<% else %>
+								<td><%= contact.home_builder.name %></td>
+							<% end %>
+							<td><%= link_to "表示する", admin_contact_path(contact), class:"btn btn-info" %> </td>
+						</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>
