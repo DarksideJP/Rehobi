@@ -4,7 +4,7 @@
 		  <%= link_to new_admin_example_path, class:"fas fa-plus-circle fa-1x mgl" do %><% end %>
 		  <%= link_to "カテゴリー追加", admin_categories_path, class:"btn btn-info mgl" %>
 		</h3>
-		<h4> 全　<%= @examples.count %>　件</h4>
+		<h4> 全　<%= @examples_all.count %>　件中　<%= @examples.count %>　件表示</h4>
 	</div>
 </div>
 <div class="examples-parent">
@@ -30,3 +30,4 @@
 		<% end %>
 	</div>
 </div>
+<%= paginate @examples %>
