@@ -36,3 +36,11 @@ ja:
         body: 説明文
         before_image_id: 施工前画像
         after_image_id: 施工後画像
+
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "..."

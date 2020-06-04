@@ -75,4 +75,5 @@ gem 'enum_help'
 gem 'paranoia'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'kaminari'
 

@@ -183,3 +183,25 @@ nav {
 .name {
 	color: #7fc845;
 }
+
+.pagination {
+	margin-top: 15px;
+	justify-content: center;
+}
+
+.page-item.active .page-link {
+	background-color: #4169e1;
+}
+
+.page-link {
+	color: #0f4c81;
+}
+
+.pagination>li>a:hover {
+	background-color: #87cefa;
+}
+
+
+
+
+
