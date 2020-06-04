@@ -3,7 +3,8 @@ class Admin::ExamplesController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-    @examples = Example.where(is_release: :true)
+    @examples_all = Example.where(is_release: :true)
+    @examples = @examples_all.page(params[:page])
   end
 
   def show
