@@ -1,9 +1,14 @@
 <div class="page-title-parent">
 	<div class="page-title">
 		<h3>施工事例</h3>
-		<h4> 全　<%= @examples_all.count %>　件中　<%= @examples.count %>　件表示</h4>
+		<% if params[:id] %>
+			<h4> 全　<%= @examples_narrow.count %>　件中　<%= @examples.count %>　件表示</h4>
+		<% else %>
+			<h4> 全　<%= @examples_all.count %>　件中　<%= @examples.count %>　件表示</h4>
+		<% end %>
 	</div>
 </div>
+<%= render "end_user/examples/search", categories: @categories %>
 <div class="examples-parent">
 	<div class="examples">
 		<% @examples.each do |example| %>
