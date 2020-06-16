@@ -4,19 +4,21 @@ before_action :authenticate_admin!
 
   def index
   	if params[:id] == "in_progress"
-      #完了以外全て取得
-  		@contacts = Contact.where.not(react_status: "complete" )
+      #完了以外全て取得(進行中案件)
+      contacts_in_progress = Contact.where.not(react_status: "complete" )
+      @contacts = contacts_in_progress.page(params[:page])
   	elsif params[:id] == "all"
-  		@contacts = Contact.all
+  		@contacts = Contact.all.page(params[:id])
     elsif params[:id] == "backlog"
       #未対応を全て取得
-      @contacts = Contact.where(react_status: "backlog")
+      contacts_backlog = Contact.where(react_status: "backlog")
+      @contacts = contacts_backlog.page(params[:page])
       #特定の会員に紐づくお問い合わせを全て取得
   	elsif params[:id]
       @end_user = EndUser.with_deleted.find(params[:id])
-      @contacts = @end_user.contacts.all
+      @contacts = @end_user.contacts.all.page(params[:page])
     else
-  		@contacts = Contact.all
+  		@contacts = Contact.all.page(params[:page])
   	end
   end
 
