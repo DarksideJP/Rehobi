@@ -1,12 +1,17 @@
 <div class="page-title-parent">
-	<div class="page-title">
+	<div class="page-title mgtb">
 		<h3>施工事例
 		  <%= link_to new_admin_example_path, class:"fas fa-plus-circle fa-1x mgl" do %><% end %>
 		  <%= link_to "カテゴリー追加", admin_categories_path, class:"btn btn-info mgl" %>
 		</h3>
-		<h4> 全　<%= @examples_all.count %>　件中　<%= @examples.count %>　件表示</h4>
+		<% if params[:id] %>
+			<h4> 全　<%= @examples_narrow.count %>　件中　<%= @examples.count %>　件表示</h4>
+		<% else %>
+			<h4> 全　<%= @examples_all.count %>　件中　<%= @examples.count %>　件表示</h4>
+		<% end %>
 	</div>
 </div>
+<%= render "admin/examples/search", categories: @categories %>
 <div class="examples-parent">
 	<div class="examples">
 		<% @examples.each do |example| %>

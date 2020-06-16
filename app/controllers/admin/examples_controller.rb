@@ -3,8 +3,15 @@ class Admin::ExamplesController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-    @examples_all = Example.where(is_release: :true)
-    @examples = @examples_all.page(params[:page])
+    @categories = Category.all
+    if params[:id]
+      @category = Category.find(params[:id])
+      @examples_narrow = @category.examples.where(is_release: :true)
+      @examples = @examples_narrow.page(params[:page])
+    else
+      @examples_all = Example.where(is_release: :true)
+      @examples = @examples_all.page(params[:page])
+    end
   end
 
   def show
