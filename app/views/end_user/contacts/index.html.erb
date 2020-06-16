@@ -16,7 +16,7 @@
 					</tr>
 				</thead>
 			<tbody>
-				<% @end_user.contacts.each do |contact| %>
+				<% @contacts.each do |contact| %>
 					<tr>
 						<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
 						<td><%= contact.title %></td>
@@ -37,3 +37,4 @@
 		</table>
 	</div>
 </body>
+<%= paginate @contacts %>
