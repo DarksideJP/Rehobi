@@ -1,0 +1,10 @@
+<div class="category-link-parent mgb">
+    <div class="category-all">
+        <%= link_to "全て", ({controller: "end_user/examples", action: "index"}), class:"btn btn-info mgr" %>
+    </div>
+    <% categories.each do |category| %>
+        <div class="category-link">
+            <%= link_to category.name, ({controller: "end_user/examples", action: "index", id: category.id}), class:"btn btn-info mgr" %>
+        </div>
+    <% end %>
+</div>
