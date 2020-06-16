@@ -8,7 +8,7 @@ before_action :authenticate_admin!
       contacts_in_progress = Contact.where.not(react_status: "complete" )
       @contacts = contacts_in_progress.page(params[:page])
   	elsif params[:id] == "all"
-  		@contacts = Contact.all.page(params[:id])
+  		@contacts = Contact.all.page(params[:page])
     elsif params[:id] == "backlog"
       #未対応を全て取得
       contacts_backlog = Contact.where(react_status: "backlog")
