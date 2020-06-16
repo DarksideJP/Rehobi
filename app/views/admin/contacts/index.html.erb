@@ -29,6 +29,7 @@
 
 					<%# 進行中案件(完了を除いた案件)かつ、会員が退会している場合 %>
 					<% if params[:id] == "in_progress" && @end_user.deleted_at != nil  %>
+					<%# 未対応案件かつ、会員が退会している場合 %>
 					<% elsif params[:id] == "backlog" && @end_user.deleted_at != nil %>
 					<% else %>
 						<tr>
