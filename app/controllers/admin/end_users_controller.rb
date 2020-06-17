@@ -3,7 +3,7 @@ class Admin::EndUsersController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-  	@end_users = EndUser.with_deleted
+  	@end_users = EndUser.with_deleted.search(params[:search])
   end
 
   def show
