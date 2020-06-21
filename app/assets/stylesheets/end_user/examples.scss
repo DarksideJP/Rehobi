@@ -6,11 +6,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.example-item:nth-child(3n+2) {
-	margin-left: 15px;
-	margin-right: 15px;
-}
-
 .examples-parent {
 	padding-left: 10%;
 	padding-right: 10%;
@@ -26,6 +21,35 @@
 	width: 32%;
 	border-radius: 30px;
 	margin-top: 15px;
+	opacity: 0;
+	// transform: translate(-100px, 100px);
+	// transition: all 700ms ease-out;
+}
+
+// 左側の事例(1,4,7)
+.example-item:nth-of-type(3n+1) {
+	transition: all 700ms ease-out;
+	transform: translate(700px, 0);
+}
+
+// 中央の事例(2,5,8)
+.example-item:nth-child(3n+2) {
+	margin-left: 15px;
+	margin-right: 15px;
+	transition: all 900ms ease-out;
+	transform: translate(400px, 0);
+}
+
+// 右側の事例(3,6,9)
+.example-item:nth-child(3n+3) {
+	transition: all 1100ms ease-out;
+	transform: translate(100px, 0);
+}
+
+
+.example-item.show {
+	opacity: 1;
+	transform: none;
 }
 
 .example-image-parent {

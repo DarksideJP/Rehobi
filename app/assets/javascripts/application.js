@@ -40,3 +40,16 @@ $(document).ready(function () {
       hidePrevious : false
   });
 });
+
+$(function(){
+  　$(window).scroll(function (){
+      $('.example-item').each(function(){
+          var elemPos = $(this).offset().top;
+          var scroll = $(window).scrollTop();
+          var windowHeight = $(window).height();
+          if (scroll > elemPos - windowHeight + 300){
+              $(this).addClass('show');
+          }
+      });
+  　});
+  });
