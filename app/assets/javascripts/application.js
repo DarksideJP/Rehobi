@@ -41,15 +41,22 @@ $(document).ready(function () {
   });
 });
 
-$(function(){
-  　$(window).scroll(function (){
-      $('.example-item').each(function(){
-          var elemPos = $(this).offset().top;
-          var scroll = $(window).scrollTop();
-          var windowHeight = $(window).height();
-          if (scroll > elemPos - windowHeight + 300){
-              $(this).addClass('show');
-          }
-      });
-  　});
+// スクロールで表示する場合
+
+// $(function(){
+//   　$(window).scroll(function (){
+//       $('.example-item').each(function(){
+//           var elemPos = $(this).offset().top;
+//           var scroll = $(window).scrollTop();
+//           var windowHeight = $(window).height();
+//           if (scroll > elemPos - windowHeight + 300){
+//               $(this).addClass('show');
+//           }
+//       });
+//   　});
+//   });
+
+//コンテンツ読み込み後に実行
+$(window).on('load', function (){
+    $('.example-item').addClass('show');
   });
